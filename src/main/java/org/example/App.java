@@ -29,10 +29,51 @@ Constraint
 Ensure your program takes only numeric data. Don’t let the user continue unless the data is valid.
  */
 
-public class App 
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Height in Inchs:");
+        BigDecimal Height;
+        try {
+            Height = new BigDecimal(in.nextDouble());
+        }
+        catch (Exception e)
+        {
+            Height = new BigDecimal(in.nextDouble());
+        }
+
+        System.out.println("Weight in Pounds:");
+        BigDecimal Weight;
+        try {
+            Weight = new BigDecimal(in.nextDouble());
+        }
+        catch (Exception e)
+        {
+            Weight = new BigDecimal(in.nextDouble());
+        }
+
+
+        double BMI = (Weight.doubleValue() / (Height.doubleValue() * Height.doubleValue()) ) * 703;
+
+        System.out.printf("Your BMI is %.2f.\n", BMI);
+
+        if (18.5 < BMI && BMI <= 25.0)
+        {
+            System.out.println("You are within the ideal weight range.");
+        }
+        else if ( BMI > 25)
+        {
+            System.out.println("You are overweight. You should see your doctor.");
+        }
+        else
+        {
+            System.out.println("You are underweight. You should see your doctor.");
+        }
     }
 }
